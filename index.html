@@ -38,10 +38,6 @@
       html {
         font-size:2rem !important;
       }
-
-      body {
-        background-color: yellow;
-      }
     }
 
     /* Large devices (laptops/desktops, 992px and up) */
@@ -49,20 +45,12 @@
       html {
         font-size: 1.2rem !important;
       }
-
-      body {
-        background-color: green;
-      }
     }
 
     /* Extra large devices (large laptops and desktops, 1200px and up) */
     @media only screen and (min-width: 1200px) {
       html {
         font-size: 1rem !important;
-      }
-
-      body {
-        background-color: blue;
       }
     }
   </style>
@@ -416,23 +404,10 @@
           <li class="nav-item">
             <a id="settingsnav" class="nav-link" onclick="openTab(event, 'settings')">Settings</a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li> -->
         </ul>
       </div>
     </div>
   </nav>
-  <div class="heading">My Cigars</div>
-
-  <!-- <div class="tab hide" id="tab"> -->
-    <!-- <button class="homebutton" onclick="openTab(event, 'all')">All</button> -->
-    <!-- <button class="homebutton" onclick="openTab(event, 'favs')">Favs</button> -->
-    <!-- <button class="btn btn-primary homebutton" onclick="openTab(event, 'cigars')">Current Inventory</button>
-    <button class="btn btn-primary homebutton" onclick="openTab(event, 'addword')">Add Cigar</button>
-    <button class="btn btn-primary homebutton" onclick="openTab(event, 'load')">Import Data</button>
-    <button class="btn btn-primary homebutton" onclick="openTab(event, 'settings')">Settings</button> -->
-  <!-- </div> -->
 
   <!-- <div id="all" class="tabcontent column display-flex hide">
     <div class="section-heading">
@@ -529,7 +504,7 @@
 
   <div id="addword" class="tabcontent column hide">
     <div class="section-heading">
-      <div class="section-header">Add Cigar</div>
+      <h3 class="p-3">Add Cigar</h3>
       <!-- <button class="section-button" onclick="goHome()">Home</button> -->
     </div>
     <hr class="section-seperator"/>
@@ -756,27 +731,31 @@
       gridDiv.className = 'pb-3 col-sm-12 col-md-6 col-lg-3';
 
       var gridDiv2 = document.createElement("div");
-      gridDiv2.className = 'p-3 m3 border rounded bg-primary h-100 d-flex flex-column justify-content-between';
+      gridDiv2.className = 'p-2 m3 border rounded bg-primary h-100 d-flex flex-column justify-content-between';
       gridDiv.appendChild(gridDiv2);
       
       var gridInfo = document.createElement("div");
       headerVals.forEach(element => {
         var gridRow = document.createElement("div");
-        gridRow.className = 'grid-row';
-        var rowLabel = document.createElement("label");
-        rowLabel.className = 'grid-label';
+        gridRow.className = 'container-fluid';
+        var row = document.createElement('div');
+        row.className = 'row';
+        var rowLabel = document.createElement("div");
+        rowLabel.className = 'col-4';
         rowLabel.innerHTML = element + ':';
-        var rowValue = document.createElement('span');
+        var rowValue = document.createElement('div');
         rowValue.innerHTML = specificCigar[element];
-        gridRow.appendChild(rowLabel);
-        gridRow.appendChild(rowValue);
+        rowValue.className = 'col-8';
+        row.appendChild(rowLabel);
+        row.appendChild(rowValue);
+        gridRow.appendChild(row);
         gridInfo.appendChild(gridRow);
       });
       gridDiv2.appendChild(gridInfo);
 
       // Add the action button
       var actionDiv = document.createElement("div");
-      actionDiv.className = 'd-flex justify-content-around';
+      actionDiv.className = 'd-flex justify-content-around pt-3';
       var smokedBtn = document.createElement("button");
       smokedBtn.addEventListener("click", smokeOne.bind(null, specificCigar, currentList));
       smokedBtn.innerHTML = "Smoke one";
