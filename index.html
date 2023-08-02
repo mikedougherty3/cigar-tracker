@@ -4,11 +4,16 @@
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/slate/bootstrap.min.css" integrity="sha384-8iuq0iaMHpnH2vSyvZMSIqQuUnQA7QM+f6srIdlgBrTSEyd//AWNMyEaSF2yPzNQ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
   <style>
     .hide {
       display: none !important;
+    }
+
+    hr {
+      background-color: #ccc;
     }
 
     /* Extra small devices (phones, 600px and down) */
@@ -55,289 +60,8 @@
     }
   </style>
   <!-- <style>
-    body {
-      background-color: black;
-    }
-
-    /* button {
-      font-size: 3em;
-    } */
-
-    input {
-      font-size: 50px;
-    }
-
-    label-old {
-      font-size: 50px;
-    }
-
-    input[type=radio] {
-      width: 30px;
-      height: 30px;
-    }
-
-    .button-big {
-      font-size: 3em;
-      padding: 1em;
-      margin: 10px;
-      border-radius: 10px;
-    }
-
-    .button-med {
-      font-size: 3em;
-      padding: 2em;
-      margin: 10px;
-      border-radius: 10px;
-    }
-
-    .word-button {
-      font-size: 1.25em;
-      padding: 1em;
-      margin: 10px;
-      border-radius: 5px;
-    }
-
-    .active-button {
-      background-color: darkgrey;
-    }
-
-    .button-green {
-      background-color: limegreen;
-    }
-
-    .button-blue {
-      background-color: deepskyblue;
-    }
-
     .hide {
       display: none !important;
-    }
-
-    .display-flex {
-      display: flex;
-    }
-
-    .even-space {
-      justify-content: space-evenly;
-    }
-
-    .column {
-      flex-direction: column;
-    }
-
-    .py {
-      padding-top: 3em;
-      padding-bottom: 1em;
-    }
-
-    .heading {
-      text-align: right;
-      font-size: 3em;
-      color: red;
-    }
-
-    .section-heading {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-    }
-
-    .section-header {
-      font-size: 3em;
-    }
-
-    .section-button {
-      font-size: 1em;
-      padding: 4px 10px;
-      margin: 4px;
-      border-radius: px;
-    }
-
-    .section-seperator {
-      width: 100%;
-      height: 3px;
-      /* background-color: black; */
-    }
-
-    .form-div {
-      display: flex;
-      margin-bottom: 20px;
-    }
-
-    .button-div {
-      display: flex;
-      justify-content: center;
-    }
-
-    #addarea {
-      padding-top: 20px;
-    }
-
-    .form-input {
-      width: 70%;
-    }
-
-    .form-label {
-      width: 25%;
-      font-size: 3em;
-    }
-
-    .w-25 {
-      width: 25%;
-    }
-
-    .small-text {
-      font-size: 30px;
-    }
-
-    .front-card {
-      font-size: 10em;
-      display: flex;
-      justify-content: center;
-      border: solid 1px black;
-      border-radius: 10px;
-      padding-top: 1em;
-      padding-bottom: 1em;
-      background-color: #fff;
-      word-break: break-word;
-    }
-
-    .front-card-error {
-      font-size: 5em;
-      display: flex;
-      justify-content: center;
-      border: solid 1px black;
-      border-radius: 10px;
-      padding-top: 1em;
-      padding-bottom: 1em;
-      background-color: #fff;
-      word-break: break-word;
-    }
-
-    .back-card {
-      font-size: 3em;
-      display: flex;
-      justify-content: center;
-      border: solid 1px black;
-      border-radius: 10px;
-      background-color: #fff;
-      word-break: break-word;
-    }
-
-    /***********************
-    **        Table       **
-    ***********************/
-    table {
-      /* font-family: arial, sans-serif; */
-      border-collapse: collapse;
-      width: 100%;
-      color: black;
-    }
-
-    th {
-      background-color: #222;
-      color: #fff;
-    }
-
-    .th-count {
-      width: 100px;
-    }
-
-    .th-actions {
-      width: 200px;
-    }
-
-    td, th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
-
-    tr:nth-child(even) {
-      background-color: #d87d7d;
-    }
-
-    tr:nth-child(odd) {
-      background-color: #8a4444;
-    }
-
-    /***********************
-    **        Grid       **
-    ***********************/
-    .grid {
-      display: flex;
-      flex-direction: row;
-    }
-
-    .grid-element {
-      display: flex;
-      flex-direction: column;
-      font-size: 14px;
-      color: white;
-      width: 25%;
-      background-color: darkgray;
-      border-radius: 10px;
-      margin: 10px;
-      padding: 10px;
-      justify-content: space-between;
-    }
-
-    .grid-row {
-      display: flex;
-    }
-
-    .grid-label {
-      width: 25%;
-    }
-
-    /***********************
-    **        Tabs       **
-    ***********************/
-    .tab {
-      display: flex;
-      flex-wrap: wrap;
-      overflow: hidden;
-      /* border: 1px solid #ccc;
-      background-color: #f1f1f1; */
-      padding-top: 20px;
-      padding-left: 20px;
-    }
-
-    /* Style the buttons inside the tab */
-    .tab button {
-      /*background-color: inherit;
-      float: left;
-      border: none;
-      outline: none;
-      transition: 0.3s;*/
-      cursor: pointer;
-      padding: 14px 16px;
-      font-size: 3em;
-      height: 250px;
-      width: 250px;
-      border-radius: 10px;
-      margin: 20px;
-    }
-
-    /* Change background color of buttons on hover */
-    .tab button:hover {
-      background-color: #ddd;
-    }
-
-    /* Create an active/current tablink class */
-    .tab button.active {
-      background-color: #ccc;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-    }
-
-    /* Style the tab content */
-    .tabcontent {
-      padding: 6px 12px;
-      color: red;
-      /* border: 1px solid #ccc; */
-      border-top: none;
-      /* background-color: #ccc; */
     }
 
     /***********************
@@ -399,7 +123,7 @@
             <a id="cigarsnav" class="nav-link active" onclick="openTab(event, 'cigars')">Current Inventory</a>
           </li>
           <li class="nav-item">
-            <a id="addwordnav" class="nav-link" onclick="openTab(event, 'addword')">Add Cigar</a>
+            <a id="addcigarnav" class="nav-link" onclick="openTab(event, 'addcigar')">Add Cigars</a>
           </li>
           <li class="nav-item">
             <a id="settingsnav" class="nav-link" onclick="openTab(event, 'settings')">Settings</a>
@@ -429,29 +153,9 @@
     </div>
   </div> -->
 
-  <!-- <div id="favs" class="tabcontent column display-flex hide">
-    <div class="section-heading">
-      <div class="section-header">Favorites</div>
-      <button class="section-button" onclick="goHome()">Home</button>
-    </div>
-    <hr class="section-seperator"/>
-    <div id="button-row-fav" class="py display-flex column"></div>
-    <div id="card-area-fav" class="py display-flex column hide"></div>
-    <div id="feedback-fav" class="py display-flex column hide">
-      <button class="button-med" onclick="giveFeedbackFav('right')">Got it right</button>
-      <button class="button-med" onclick="giveFeedbackFav('wrong')">Got it wrong</button>
-      <button id="removefav" class="button-med" onclick="giveFeedbackFav('remove')">Remove Word From Favs</button>
-    </div>
-    <div id="hidden-area-fav" class="hide">
-      <div id="current-fav-part-of-speech"></div>
-      <div id="current-fav-word"></div>
-    </div>
-  </div> -->
-
   <div id="cigars" class="tabcontent column">
     <div class="section-heading">
       <h3 class="p-3">Current Inventory</h3>
-      <!-- <button class="section-button" onclick="goHome()">Home</button> -->
     </div>
     <hr class="section-seperator"/>
     <div id="words-content">
@@ -502,10 +206,9 @@
     </div>
   </div> -->
 
-  <div id="addword" class="tabcontent column hide">
+  <div id="addcigar" class="tabcontent column hide">
     <div class="section-heading">
-      <h3 class="p-3">Add Cigar</h3>
-      <!-- <button class="section-button" onclick="goHome()">Home</button> -->
+      <h3 class="p-3">Add Cigars</h3>
     </div>
     <hr class="section-seperator"/>
     <div id="add-content">
@@ -521,7 +224,7 @@
     // populateLearn();
     // populateFavorite();
     // populateSettings();
-    populateAddWords();
+    populateAddCigars();
     // if (localStorage.getItem(APP_LOCAL_STORAGE_PREFIX + 'seengroupWords') == null) {
     //   localStorage.setItem(APP_LOCAL_STORAGE_PREFIX + 'seengroupWords', JSON.stringify({}));
     // }
@@ -713,13 +416,25 @@
       console.log('havent seen that one before');
     }
 
+    var wordArea = document.getElementById("wordarea");
+
     if (!currentList || currentList.length === 0) {
+      var noCigars = document.createElement('h2');
+      noCigars.innerHTML = "You have no cigars. Go to the Add Cigars page to add some.";
+      wordArea.appendChild(noCigars);
       console.log('Add some cigars');
-      openTab(event, 'addword');
+      openTab(event, 'addcigar');
       return;
     }
 
-    var wordArea = document.getElementById("wordarea");
+    // TODO: Add a sort capability for the grid
+    // var sortDiv = document.createElement("div");
+    // var sortBtn = document.createElement("button");
+    // // sortBtn.addEventListener("click", smokeOne.bind(null, specificCigar, currentList));
+    // sortBtn.innerHTML = "<i class=\"bi bi-cloud-fog2 mr-1\"></i> Sort by";
+    // sortBtn.className = 'btn btn-sm btn-danger';
+    // sortDiv.appendChild(sortBtn);
+    // wordArea.appendChild(sortDiv);
 
     var grid = document.createElement("div");
     grid.className = 'd-flex flex-wrap';
@@ -727,6 +442,7 @@
     var headerVals = Object.keys(currentList[0]);
       
     currentList.forEach((specificCigar) => {
+      var count = 0;
       var gridDiv = document.createElement("div");
       gridDiv.className = 'pb-3 col-sm-12 col-md-6 col-lg-3';
 
@@ -736,6 +452,9 @@
       
       var gridInfo = document.createElement("div");
       headerVals.forEach(element => {
+        if (element == 'Count') {
+          count = specificCigar[element]
+        }
         var gridRow = document.createElement("div");
         gridRow.className = 'container-fluid';
         var row = document.createElement('div');
@@ -758,32 +477,20 @@
       actionDiv.className = 'd-flex justify-content-around pt-3';
       var smokedBtn = document.createElement("button");
       smokedBtn.addEventListener("click", smokeOne.bind(null, specificCigar, currentList));
-      smokedBtn.innerHTML = "Smoke one";
+      smokedBtn.innerHTML = "<i class=\"bi bi-cloud-fog2 mr-1\"></i>Smoke one";
       smokedBtn.className = 'btn btn-sm btn-danger';
       actionDiv.appendChild(smokedBtn);
       var boughtBtn = document.createElement("button");
       boughtBtn.addEventListener("click", boughtOne.bind(null, specificCigar, currentList));
-      boughtBtn.innerHTML = "Bought one";
+      boughtBtn.innerHTML = "<i class=\"bi bi-currency-dollar mr-1\"></i>Bought one";
       boughtBtn.className = 'btn btn-sm btn-success';
       actionDiv.appendChild(boughtBtn);
       gridDiv2.appendChild(actionDiv);
 
-      grid.appendChild(gridDiv);
+      if (count != '0' && count != 0) {
+        grid.appendChild(gridDiv);
+      }
     });
-      
-      // // Add the favorite
-      // var tableData = document.createElement("td");
-      // var favorited = favList.find(elem => elem['German'] == wordObject['German']);
-      // if(favorited) {
-      //   tableData.innerHTML = '\u2714'
-      // }
-      // tableRow.appendChild(tableData);
-
-      
-
-      // Finally add the row to the table
-      
-    // }
 
     wordArea.appendChild(grid);
     wordArea.className = "";
@@ -800,7 +507,7 @@
 
     if (!currentList || currentList.length === 0) {
       console.log('Add some cigars');
-      openTab(event, 'addword');
+      openTab(event, 'addcigar');
       return;
     }
 
@@ -826,9 +533,6 @@
     headerRow.appendChild(actionHeader);
     tableHead.appendChild(headerRow);
     table.appendChild(tableHead);
-    
-    // for (var i = 0; i < currentList.length; i++) {
-    //   const brand = brandKeys[i];
       
     var tablebody = document.createElement("tbody");
     currentList.forEach((specificCigar, i) => {
@@ -1117,135 +821,6 @@
 
   // /*********************************************************************
   //  *                                                                   *
-  //  *      This section if for learning the favorited words in the app
-  //  *                                                                   *  
-  //  ********************************************************************/
-
-  // function populateFavorite() {
-  //   deleteElementContents('button-row-fav');
-
-  //   var partsOfSpeech = getPartsOfSpeechFromLocalStorage();
-    
-  //   var buttonRow = document.getElementById('button-row-fav');
-  //   partsOfSpeech.forEach(function(partOfSpeech) {
-  //     var button = document.createElement("button");
-  //     button.setAttribute("onclick", `showNewFavCard("${partOfSpeech}")`);
-  //     button.className = 'button-big';
-  //     button.innerHTML = `Show me a ${partOfSpeech}`;
-  //     buttonRow.appendChild(button);
-
-  //     var favList = JSON.parse(localStorage.getItem(APP_LOCAL_STORAGE_PREFIX + partOfSpeech + "Fav"));
-  //     if(!favList) {
-  //       localStorage.setItem(APP_LOCAL_STORAGE_PREFIX + partOfSpeech + "Fav",JSON.stringify([]));
-  //     }
-  //   });
-  // }
-
-  // function showNewFavCard(partOfSpeech) {
-  //   deleteElementContents('card-area-fav');
-  //   var currentList = [];
-  //   try {
-  //     currentList = JSON.parse(localStorage.getItem(APP_LOCAL_STORAGE_PREFIX + partOfSpeech + "Fav"));
-  //   } catch (e) {
-  //     console.log('havent seen that one before');
-  //   }
-
-  //   var cardArea = document.getElementById("card-area-fav");
-
-  //   if(currentList.length == 0) {
-  //     var frontcard = document.createElement("div");
-  //     frontcard.setAttribute("id", 'front-card-fav');
-  //     frontcard.className = 'front-card-error';
-  //     frontcard.innerHTML = "You need favorites for " + partOfSpeech + ". Please go to the Words tab and select some favorites";
-  //     frontcard.setAttribute("onclick", "resetFavSection()");
-  //     cardArea.appendChild(frontcard);
-  //     cardArea.classList.remove('hide');
-  //     document.getElementById('button-row-fav').classList.add('hide');
-  //     return;
-  //   }
-
-  //   var wordNumber = Math.floor(Math.random() * currentList.length);
-  //   //if (isNaN(wordNumber) || wordNumber > currentList.length-1) {
-  //   //  wordNumber = 0;
-  //   //}
-  //   var randomWord = currentList[wordNumber]
-
-  //   if (!randomWord) {
-  //     randomWord = {'German': `Could not find a ${partOfSpeech}`, 'English': `Could not find a ${partOfSpeech}`};
-  //   }
-
-  //   document.getElementById('current-fav-part-of-speech').innerHTML = partOfSpeech;
-  //   document.getElementById('current-fav-word').innerHTML = randomWord['German'];
-
-  //   var frontText = Math.random() > 0.5 ? randomWord["German"] : randomWord["English"];
-
-  //   var frontcard = document.createElement("div");
-  //   frontcard.setAttribute("id", 'front-card-fav');
-  //   frontcard.setAttribute("onclick", "flipCardFav()");
-  //   frontcard.className = 'front-card';
-  //   frontcard.innerHTML = frontText;
-  //   cardArea.appendChild(frontcard);
-
-  //   var backcard = document.createElement("div");
-  //   backcard.setAttribute("id", 'back-card-fav');
-  //   backcard.className = 'back-card display-flex column hide';
-  //   Object.keys(randomWord).forEach((key) => {
-  //     var line = document.createElement("div");
-  //     line.innerHTML = `${key}: ${randomWord[key]}`;
-      
-  //     if (key == 'Part of Speech' || randomWord[key] == '') {
-  //       return;
-  //     }
-  //     backcard.appendChild(line);
-  //   });
-  //   cardArea.appendChild(backcard);
-  //   cardArea.classList.remove('hide');
-
-  //   document.getElementById('button-row-fav').classList.add('hide');
-  // }
-
-  // function flipCardFav() {
-  //   document.getElementById('front-card-fav').className = 'hide';
-  //   document.getElementById('back-card-fav').classList.remove('hide');
-  //   document.getElementById('feedback-fav').classList.remove('hide');
-  // }
-
-  // function resetFavSection() {
-  //   document.getElementById('button-row-fav').classList.remove('hide');
-  //   document.getElementById('card-area-fav').classList.add('hide');
-  //   document.getElementById('feedback-fav').classList.add('hide');
-  // }
-
-  // function giveFeedbackFav(feedback) {
-  //   var partOfSpeech = document.getElementById('current-fav-part-of-speech').innerHTML;
-  //   var word = document.getElementById('current-fav-word').innerHTML;
-  //   var favList = JSON.parse(localStorage.getItem(APP_LOCAL_STORAGE_PREFIX + partOfSpeech + "Fav"));
-  //   var wordObject = favList.filter((wordObj) => wordObj['German'] == word);
-    
-  //   if (wordObject.length != 1) {
-  //     document.getElementById('button-row-fav').classList.remove('hide');
-  //     document.getElementById('card-area-fav').classList.add('hide');
-  //     document.getElementById('feedback-fav').classList.add('hide');
-  //   }
-  //   if (feedback == 'remove') {
-  //     var newList = favList.filter((wordObj) => wordObj['German'] != word);
-  //     localStorage.setItem(APP_LOCAL_STORAGE_PREFIX + partOfSpeech + "Fav", JSON.stringify(newList));
-  //   } else if (feedback == 'right') {
-  //     wordObject[0]['Streak'] ? wordObject[0]['Streak'] += 1 : wordObject[0]['Streak'] = 1;
-  //     localStorage.setItem(APP_LOCAL_STORAGE_PREFIX + partOfSpeech + "Fav", JSON.stringify(favList));
-  //   } else if (feedback == 'wrong') {
-  //     wordObject[0]['Streak'] = 0;
-  //     localStorage.setItem(APP_LOCAL_STORAGE_PREFIX + partOfSpeech + "Fav", JSON.stringify(favList));
-  //   }
-    
-  //   document.getElementById('button-row-fav').classList.remove('hide');
-  //   document.getElementById('card-area-fav').classList.add('hide');
-  //   document.getElementById('feedback-fav').classList.add('hide');
-  // }
-
-
-  // /*********************************************************************
-  //  *                                                                   *
   //  *      This section if for settings
   //  *                                                                   *  
   //  ********************************************************************/
@@ -1384,11 +959,11 @@
 
   /*********************************************************************
    *                                                                   *
-   *      This section if for adding words to the app
+   *      This section if for adding cigars to the app
    *                                                                   *  
    ********************************************************************/
 
-  function populateAddWords() {
+  function populateAddCigars() {
     var addDiv = document.getElementById('add-content');
     var addArea = document.createElement("div");
     addArea.setAttribute('id', 'addarea');
@@ -1397,17 +972,6 @@
     makeAddCigarTable();
   }
 
-  // // function showAddWord(partOfSpeech) {
-  //   var addWordButtons = document.getElementsByClassName('add-button-selector');
-  //   for (var i = 0; i < addWordButtons.length; i++) {
-  //     if (addWordButtons[i].innerHTML == partOfSpeech) {
-  //       if (!addWordButtons[i].classList.contains('active-button')) {
-  //         addWordButtons[i].classList.add('active-button');
-  //       }
-  //     } else {
-  //       addWordButtons[i].classList.remove('active-button');
-  //     }
-  //   }
   function makeAddCigarTable() {
     deleteElementContents('addarea');
     var currentList = [];
@@ -1428,33 +992,39 @@
     //var tableRow = document.createElement("tr");
     for (var i = 0; i < headerVals.length; i++) {
       var element = headerVals[i];
-      if (element == 'Streak') {
-        continue;
-      }
-      var formDiv = document.createElement("div");
-      formDiv.className = 'form-div';
+      var containerDiv = document.createElement("div");
+      containerDiv.className = 'container';
+      var rowDiv = document.createElement("div");
+      rowDiv.className = 'row pb-2 form-div';
+      containerDiv.appendChild(rowDiv);
       
-      var label = document.createElement('span');
-      label.innerHTML = element; //.charAt(0).toUpperCase() + element.slice(1);
-      // label.innerHTML = element.replace(/[^\w]/gi, '');
-      label.className = "form-label";
-      formDiv.appendChild(label);
+      var label = document.createElement('div');
+      label.className = "col-2";
+      label.innerHTML = element;
+      rowDiv.appendChild(label);
       
+      var inputDiv = document.createElement('div');
+      inputDiv.className = "col-10";
       var input = document.createElement('input');
-      input.setAttribute('type', 'text');
+      if (element !== 'Count') {
+        input.setAttribute('type', 'text');
+      } else {
+        input.setAttribute('type', 'number');
+      }
       input.setAttribute('id', element);
       input.setAttribute('required', true);
-      input.className = "form-input";
-      formDiv.appendChild(input);
-      addArea.appendChild(formDiv);
+      input.className = 'w-100';
+      inputDiv.appendChild(input);
+      rowDiv.appendChild(inputDiv);
+      addArea.appendChild(containerDiv);
     }
 
     var buttonDiv = document.createElement("div");
-    buttonDiv.className = 'button-div';
+    buttonDiv.className = 'd-flex justify-content-center';
     var addBtn = document.createElement("button");
     addBtn.addEventListener("click", addnewcigar.bind(null, currentList));
     addBtn.innerHTML = "Add";
-    addBtn.className = 'button-big button-green';
+    addBtn.className = 'btn btn-success';
     buttonDiv.appendChild(addBtn);
     addArea.appendChild(buttonDiv);
     addArea.className = "";
@@ -1475,7 +1045,11 @@
     var newWordObject = {};
     for (var i =  0; i < formDivs.length; i++) {
       var key = formDivs[i].firstElementChild.innerHTML;
-      var value = formDivs[i].lastElementChild.value;
+      var value = document.getElementById(key).value; // formDivs[i].lastElementChild.value;
+      if (!value || value == '') {
+        alert("Please add a value for " + key);
+        return;
+      }
       newWordObject[key] = value;
     }
 
