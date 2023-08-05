@@ -475,16 +475,21 @@
       // Add the action button
       var actionDiv = document.createElement("div");
       actionDiv.className = 'd-flex justify-content-around pt-3';
-      var smokedBtn = document.createElement("button");
-      smokedBtn.addEventListener("click", smokeOne.bind(null, specificCigar, currentList));
-      smokedBtn.innerHTML = "<i class=\"bi bi-cloud-fog2 mr-1\"></i>Smoke one";
-      smokedBtn.className = 'btn btn-sm btn-danger';
-      actionDiv.appendChild(smokedBtn);
-      var boughtBtn = document.createElement("button");
-      boughtBtn.addEventListener("click", boughtOne.bind(null, specificCigar, currentList));
-      boughtBtn.innerHTML = "<i class=\"bi bi-currency-dollar mr-1\"></i>Bought one";
-      boughtBtn.className = 'btn btn-sm btn-success';
-      actionDiv.appendChild(boughtBtn);
+      // var smokedBtn = document.createElement("button");
+      // smokedBtn.addEventListener("click", smokeOne.bind(null, specificCigar, currentList));
+      // smokedBtn.innerHTML = "<i class=\"bi bi-cloud-fog2 mr-1\"></i>Smoke one";
+      // smokedBtn.className = 'btn btn-sm btn-danger';
+      // actionDiv.appendChild(smokedBtn);
+      // var boughtBtn = document.createElement("button");
+      // boughtBtn.addEventListener("click", boughtOne.bind(null, specificCigar, currentList));
+      // boughtBtn.innerHTML = "<i class=\"bi bi-currency-dollar mr-1\"></i>Bought one";
+      // boughtBtn.className = 'btn btn-sm btn-success';
+      // actionDiv.appendChild(boughtBtn);
+      var editBtn = document.createElement("button");
+      editBtn.addEventListener("click", editEntry.bind(null, specificCigar, currentList));
+      editBtn.innerHTML = "<i class=\"bi bi-pencil mr-1\"></i>Edit";
+      editBtn.className = 'btn btn-sm btn-success';
+      actionDiv.appendChild(editBtn);
       gridDiv2.appendChild(actionDiv);
 
       if (count != '0' && count != 0) {
@@ -585,6 +590,10 @@
     localStorage.setItem(APP_LOCAL_STORAGE_PREFIX, JSON.stringify(currentList));
     // buildInventoryTable();
     buildInventoryGrid();
+  }
+
+  function editEntry(specificCigar, currentList) {
+    console.log('editing');
   }
 
   // function addDropdown(partOfSpeech, favorited, actionDiv, wordObject) {
