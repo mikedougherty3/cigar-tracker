@@ -214,6 +214,54 @@
     <div id="add-content">
     </div>
   </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Edit </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="addarea" class="">
+            <div class="container">
+              <div class="row pb-2 form-div">
+                <div class="col-4">Brand</div>
+                <div class="col-8">
+                  <input type="text" id="Brand-Edit" required="true" class="w-100">
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="row pb-2 form-div">
+                <div class="col-4">Name</div>
+                <div class="col-8">
+                  <input type="text" id="Name-Edit" required="true" class="w-100">
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="row pb-2 form-div">
+                <div class="col-4">Count</div>
+                <div class="col-8">
+                  <input type="number" id="Count-Edit" required="true" class="w-100">
+                  <!-- <button class="btn btn-sm btn-success">+</button>
+                  <button class="btn btn-sm btn-info">-</button> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal" onclick="saveCurrent()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 <script>
@@ -231,7 +279,8 @@
   }
 
   const APP_LOCAL_STORAGE_PREFIX = 'cigars';
-
+  let currentListForEdit;
+  let currentCigarForEdit;
   
 
 
@@ -489,6 +538,8 @@
       editBtn.addEventListener("click", editEntry.bind(null, specificCigar, currentList));
       editBtn.innerHTML = "<i class=\"bi bi-pencil mr-1\"></i>Edit";
       editBtn.className = 'btn btn-sm btn-success';
+      editBtn.setAttribute('data-toggle', 'modal');
+      editBtn.setAttribute('data-target', '#exampleModalCenter')
       actionDiv.appendChild(editBtn);
       gridDiv2.appendChild(actionDiv);
 
@@ -593,7 +644,29 @@
   }
 
   function editEntry(specificCigar, currentList) {
+    currentCigarForEdit = specificCigar;
+    currentListForEdit = currentList;
     console.log('editing');
+    var newBrand = specificCigar.Brand.slice();
+    var newName = specificCigar.Name.slice();
+    var newCount = specificCigar.Count;
+
+    document.getElementById('Brand-Edit').value = newBrand;
+    document.getElementById('Name-Edit').value = newName;
+    document.getElementById('Count-Edit').value = newCount;
+  }
+
+  function saveCurrent() {
+    var newBrand = document.getElementById('Brand-Edit').value;
+    var newName = document.getElementById('Name-Edit').value;
+    var newCount = document.getElementById('Count-Edit').value;
+
+    currentCigarForEdit.Brand = newBrand;
+    currentCigarForEdit.Name = newName;
+    currentCigarForEdit.Count = newCount;
+
+    localStorage.setItem(APP_LOCAL_STORAGE_PREFIX, JSON.stringify(currentListForEdit));
+    buildInventoryGrid();
   }
 
   // function addDropdown(partOfSpeech, favorited, actionDiv, wordObject) {
