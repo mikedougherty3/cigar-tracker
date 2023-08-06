@@ -247,9 +247,9 @@
               <div class="row pb-2 form-div">
                 <div class="col-4">Count</div>
                 <div class="col-8">
-                  <input type="number" id="Count-Edit" required="true" class="w-100">
-                  <!-- <button class="btn btn-sm btn-success">+</button>
-                  <button class="btn btn-sm btn-info">-</button> -->
+                  <input type="number" id="Count-Edit" required="true" class="w-25">
+                  <button class="btn btn-sm btn-success mx-1" onclick="boughtOne()">+</button>
+                  <button class="btn btn-sm btn-info mx-1" onclick="smokeOne()">-</button>
                 </div>
               </div>
             </div>
@@ -625,22 +625,28 @@
     wordArea.className = "p-3";
   }
 
-  function smokeOne(specificCigar, currentList) {
+  function smokeOne() { // specificCigar, currentList) {
     console.log('you smoked one');
-    if (specificCigar.Count > 0) {
-      specificCigar.Count = parseInt(specificCigar.Count) - 1;
-      localStorage.setItem(APP_LOCAL_STORAGE_PREFIX, JSON.stringify(currentList));
-      // buildInventoryTable();
-      buildInventoryGrid();
+    var countElement = document.getElementById('Count-Edit');
+    if (parseInt(countElement.value) > 0) {
+      countElement.value = parseInt(countElement.value) - 1;
     }
+    // if (specificCigar.Count > 0) {
+    //   specificCigar.Count = parseInt(specificCigar.Count) - 1;
+    //   localStorage.setItem(APP_LOCAL_STORAGE_PREFIX, JSON.stringify(currentList));
+    //   // buildInventoryTable();
+    //   buildInventoryGrid();
+    // }
   }
 
-  function boughtOne(specificCigar, currentList) {
+  function boughtOne() { // specificCigar, currentList) {
     console.log('you bought one');
-    specificCigar.Count = parseInt(specificCigar.Count) + 1;
-    localStorage.setItem(APP_LOCAL_STORAGE_PREFIX, JSON.stringify(currentList));
-    // buildInventoryTable();
-    buildInventoryGrid();
+    var countElement = document.getElementById('Count-Edit'); 
+    countElement.value = parseInt(countElement.value) + 1;
+    // specificCigar.Count = parseInt(specificCigar.Count) + 1;
+    // localStorage.setItem(APP_LOCAL_STORAGE_PREFIX, JSON.stringify(currentList));
+    // // buildInventoryTable();
+    // buildInventoryGrid();
   }
 
   function editEntry(specificCigar, currentList) {
