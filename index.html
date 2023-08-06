@@ -155,7 +155,11 @@
 
   <div id="cigars" class="tabcontent column">
     <div class="section-heading">
-      <h3 class="p-3">Current Inventory</h3>
+      <h3 class="pt-3 px-3">Current Inventory</h3>
+      <h6 class="px-3">
+        <span>Total Count:</span>
+        <span id="cigarCount"></span>
+      </h6>
     </div>
     <hr class="section-seperator"/>
     <div id="words-content">
@@ -489,7 +493,8 @@
     grid.className = 'd-flex flex-wrap';
 
     var headerVals = Object.keys(currentList[0]);
-      
+    
+    var totalCount = 0;
     currentList.forEach((specificCigar) => {
       var count = 0;
       var gridDiv = document.createElement("div");
@@ -502,7 +507,8 @@
       var gridInfo = document.createElement("div");
       headerVals.forEach(element => {
         if (element == 'Count') {
-          count = specificCigar[element]
+          count = parseInt(specificCigar[element]);
+          totalCount += count;
         }
         var gridRow = document.createElement("div");
         gridRow.className = 'container-fluid';
@@ -550,6 +556,8 @@
 
     wordArea.appendChild(grid);
     wordArea.className = "";
+
+    document.getElementById('cigarCount').innerHTML = totalCount;
   }
 
   function buildInventoryTable() {
