@@ -565,6 +565,40 @@
       });
       gridDiv2.appendChild(gridInfo);
 
+      // Add collapse for notes and rating
+      var collapseDiv = document.createElement("div");
+      collapseDiv.className = 'collapse';
+      collapseDiv.setAttribute('id', 'collapseExample-' + specificCigar.Brand.replace(/\s+/g, '-') + '-' + specificCigar.Name.replace(/\s+/g, '-'));
+      var gridRow = document.createElement("div");
+      gridRow.className = 'container-fluid';
+      var row = document.createElement('div');
+      row.className = 'row';
+      var rowLabel = document.createElement("div");
+      rowLabel.className = 'col-4';
+      rowLabel.innerHTML = 'Notes:';
+      var rowValue = document.createElement('div');
+      rowValue.innerHTML = specificCigar.Notes ? specificCigar.Notes : '';
+      rowValue.className = 'col-8';
+      row.appendChild(rowLabel);
+      row.appendChild(rowValue);
+      gridRow.appendChild(row);
+      collapseDiv.appendChild(gridRow);
+      var gridRow = document.createElement("div");
+      gridRow.className = 'container-fluid';
+      var row = document.createElement('div');
+      row.className = 'row';
+      var rowLabel = document.createElement("div");
+      rowLabel.className = 'col-4';
+      rowLabel.innerHTML = 'Rating:';
+      var rowValue = document.createElement('div');
+      rowValue.innerHTML = specificCigar.Rating ? specificCigar.Rating : '';
+      rowValue.className = 'col-8';
+      row.appendChild(rowLabel);
+      row.appendChild(rowValue);
+      gridRow.appendChild(row);
+      collapseDiv.appendChild(gridRow);
+      gridInfo.appendChild(collapseDiv);
+
       // Add the action button
       var actionDiv = document.createElement("div");
       actionDiv.className = 'd-flex justify-content-around pt-3';
@@ -578,6 +612,16 @@
       // boughtBtn.innerHTML = "<i class=\"bi bi-currency-dollar mr-1\"></i>Bought one";
       // boughtBtn.className = 'btn btn-sm btn-success';
       // actionDiv.appendChild(boughtBtn);
+      
+      var detailsBtn = document.createElement("button");
+      detailsBtn.innerHTML = "<i class=\"bi bi-eyeglasses mr-1\"></i>Details";
+      detailsBtn.className = 'btn btn-sm btn-info';
+      detailsBtn.setAttribute('data-toggle', 'collapse');
+      detailsBtn.setAttribute('data-target', '#collapseExample-' + specificCigar.Brand.replace(/\s+/g, '-') + '-' + specificCigar.Name.replace(/\s+/g, '-'));
+      detailsBtn.setAttribute('aria-expanded', false);
+      detailsBtn.setAttribute('aria-controls', 'collapseExample-' + specificCigar.Brand.replace(/\s+/g, '-') + '-' + specificCigar.Name.replace(/\s+/g, '-'))
+      actionDiv.appendChild(detailsBtn);
+
       var editBtn = document.createElement("button");
       editBtn.addEventListener("click", editEntry.bind(null, specificCigar, currentList));
       editBtn.innerHTML = "<i class=\"bi bi-pencil mr-1\"></i>Edit";
