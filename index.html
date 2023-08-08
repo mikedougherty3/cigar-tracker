@@ -15,6 +15,22 @@
     hr {
       background-color: #ccc;
     }
+    
+    input {
+      background-color: grey;
+      color: white;
+      border-radius: 5px;
+    }
+
+    textarea {
+      background-color: grey;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .bi-star-fill {
+      color: gold;
+    }
 
     /* Extra small devices (phones, 600px and down) */
     /* @media only screen and (max-width: 600px) {
@@ -223,7 +239,7 @@
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header p-1">
           <h5 class="modal-title" id="exampleModalLongTitle">Edit </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -257,6 +273,26 @@
                 </div>
               </div>
             </div>
+            <div class="container">
+              <div class="row pb-2 form-div">
+                <div class="col-4">Notes</div>
+                <div class="col-8">
+                  <textarea rows="2" id="Notes-Edit" required="false" class="w-100"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="row pb-2 form-div">
+                <div class="col-4">Rating</div>
+                <div class="col-8">
+                  <i id="Rating-One" class="bi bi-star" onclick="setOneStar()"></i>
+                  <i id="Rating-Two" class="bi bi-star" onclick="setTwoStar()"></i>
+                  <i id="Rating-Three" class="bi bi-star" onclick="setThreeStar()"></i>
+                  <i id="Rating-Four" class="bi bi-star" onclick="setFourStar()"></i>
+                  <i id="Rating-Five" class="bi bi-star" onclick="setFiveStar()"></i>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="modal-footer">
@@ -283,6 +319,7 @@
   }
 
   const APP_LOCAL_STORAGE_PREFIX = 'cigars';
+  const showVals = ['Brand', 'Name', 'Count'];
   let currentListForEdit;
   let currentCigarForEdit;
   
@@ -492,7 +529,7 @@
     var grid = document.createElement("div");
     grid.className = 'd-flex flex-wrap';
 
-    var headerVals = Object.keys(currentList[0]);
+    // var headerVals = Object.keys(currentList[0]);
     
     var totalCount = 0;
     currentList.forEach((specificCigar) => {
@@ -505,7 +542,8 @@
       gridDiv.appendChild(gridDiv2);
       
       var gridInfo = document.createElement("div");
-      headerVals.forEach(element => {
+      // headerVals.forEach(element => {
+      showVals.forEach(element => {
         if (element == 'Count') {
           count = parseInt(specificCigar[element]);
           totalCount += count;
@@ -657,6 +695,46 @@
     // buildInventoryGrid();
   }
 
+  function setOneStar() {
+    document.getElementById("Rating-One").className = 'bi bi-star-fill';
+    document.getElementById("Rating-Two").className = 'bi bi-star';
+    document.getElementById("Rating-Three").className = 'bi bi-star';
+    document.getElementById("Rating-Four").className = 'bi bi-star';
+    document.getElementById("Rating-Five").className = 'bi bi-star';
+  }
+
+  function setTwoStar() {
+    document.getElementById("Rating-One").className = 'bi bi-star-fill';
+    document.getElementById("Rating-Two").className = 'bi bi-star-fill';
+    document.getElementById("Rating-Three").className = 'bi bi-star';
+    document.getElementById("Rating-Four").className = 'bi bi-star';
+    document.getElementById("Rating-Five").className = 'bi bi-star';
+  }
+
+  function setThreeStar() {
+    document.getElementById("Rating-One").className = 'bi bi-star-fill';
+    document.getElementById("Rating-Two").className = 'bi bi-star-fill';
+    document.getElementById("Rating-Three").className = 'bi bi-star-fill';
+    document.getElementById("Rating-Four").className = 'bi bi-star';
+    document.getElementById("Rating-Five").className = 'bi bi-star';
+  }
+
+  function setFourStar() {
+    document.getElementById("Rating-One").className = 'bi bi-star-fill';
+    document.getElementById("Rating-Two").className = 'bi bi-star-fill';
+    document.getElementById("Rating-Three").className = 'bi bi-star-fill';
+    document.getElementById("Rating-Four").className = 'bi bi-star-fill';
+    document.getElementById("Rating-Five").className = 'bi bi-star';
+  }
+
+  function setFiveStar() {
+    document.getElementById("Rating-One").className = 'bi bi-star-fill';
+    document.getElementById("Rating-Two").className = 'bi bi-star-fill';
+    document.getElementById("Rating-Three").className = 'bi bi-star-fill';
+    document.getElementById("Rating-Four").className = 'bi bi-star-fill';
+    document.getElementById("Rating-Five").className = 'bi bi-star-fill';
+  }
+
   function editEntry(specificCigar, currentList) {
     currentCigarForEdit = specificCigar;
     currentListForEdit = currentList;
@@ -664,20 +742,68 @@
     var newBrand = specificCigar.Brand.slice();
     var newName = specificCigar.Name.slice();
     var newCount = specificCigar.Count;
+    var newNotes = '';
+    if (specificCigar.Notes) {
+      newNotes = specificCigar.Notes.slice();
+    }
+    document.getElementById("Rating-One").className = 'bi bi-star';
+    document.getElementById("Rating-Two").className = 'bi bi-star';
+    document.getElementById("Rating-Three").className = 'bi bi-star';
+    document.getElementById("Rating-Four").className = 'bi bi-star';
+    document.getElementById("Rating-Five").className = 'bi bi-star';
+    if (specificCigar.Rating) {
+      var rating = parseInt(specificCigar.Rating);
+      if (rating >= 1) {
+        document.getElementById("Rating-One").className = 'bi bi-star-fill';
+      }
+      if (rating >= 2) {
+        document.getElementById("Rating-Two").className = 'bi bi-star-fill';
+      }
+      if (rating >= 3) {
+        document.getElementById("Rating-Three").className = 'bi bi-star-fill';
+      }
+      if (rating >= 4) {
+        document.getElementById("Rating-Four").className = 'bi bi-star-fill';
+      }
+      if (rating == 5) {
+        document.getElementById("Rating-Five").className = 'bi bi-star-fill';
+      }
+    }
 
     document.getElementById('Brand-Edit').value = newBrand;
     document.getElementById('Name-Edit').value = newName;
     document.getElementById('Count-Edit').value = newCount;
+    document.getElementById('Notes-Edit').value = newNotes;
   }
 
   function saveCurrent() {
     var newBrand = document.getElementById('Brand-Edit').value;
     var newName = document.getElementById('Name-Edit').value;
     var newCount = document.getElementById('Count-Edit').value;
+    var newNotes = document.getElementById('Notes-Edit').value;
+
+    var rating;
+    if (document.getElementById('Rating-One').classList.contains('bi-star-fill')) {
+      rating = 1;
+    }
+    if (document.getElementById('Rating-Two').classList.contains('bi-star-fill')) {
+      rating = 2;
+    }
+    if (document.getElementById('Rating-Three').classList.contains('bi-star-fill')) {
+      rating = 3;
+    }
+    if (document.getElementById('Rating-Four').classList.contains('bi-star-fill')) {
+      rating = 4;
+    }
+    if (document.getElementById('Rating-Five').classList.contains('bi-star-fill')) {
+      rating = 5;
+    }
 
     currentCigarForEdit.Brand = newBrand;
     currentCigarForEdit.Name = newName;
     currentCigarForEdit.Count = newCount;
+    currentCigarForEdit.Notes = newNotes;
+    currentCigarForEdit.Rating = rating;
 
     localStorage.setItem(APP_LOCAL_STORAGE_PREFIX, JSON.stringify(currentListForEdit));
     buildInventoryGrid();
