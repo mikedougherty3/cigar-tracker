@@ -248,7 +248,7 @@
         <div class="modal-body">
           <div id="addarea" class="">
             <div class="container">
-              <div class="row pb-2 form-div">
+              <div class="row pb-2">
                 <div class="col-4">Brand</div>
                 <div class="col-8">
                   <input type="text" id="Brand-Edit" required="true" class="w-100">
@@ -256,7 +256,7 @@
               </div>
             </div>
             <div class="container">
-              <div class="row pb-2 form-div">
+              <div class="row pb-2">
                 <div class="col-4">Name</div>
                 <div class="col-8">
                   <input type="text" id="Name-Edit" required="true" class="w-100">
@@ -264,7 +264,7 @@
               </div>
             </div>
             <div class="container">
-              <div class="row pb-2 form-div">
+              <div class="row pb-2">
                 <div class="col-4">Count</div>
                 <div class="col-8">
                   <input type="number" id="Count-Edit" required="true" class="w-25">
@@ -274,7 +274,7 @@
               </div>
             </div>
             <div class="container">
-              <div class="row pb-2 form-div">
+              <div class="row pb-2">
                 <div class="col-4">Notes</div>
                 <div class="col-8">
                   <textarea rows="2" id="Notes-Edit" required="false" class="w-100"></textarea>
@@ -282,7 +282,7 @@
               </div>
             </div>
             <div class="container">
-              <div class="row pb-2 form-div">
+              <div class="row pb-2"> 
                 <div class="col-4">Rating</div>
                 <div class="col-8">
                   <i id="Rating-One" class="bi bi-star" onclick="setOneStar()"></i>
@@ -1205,15 +1205,15 @@
 
     var addArea = document.getElementById("addarea");
 
-    var headerVals;
-    if (!currentList || !currentList.length) {
-      headerVals = ['Brand', 'Name', 'Count'];
-    } else {
-      headerVals = Object.keys(currentList[0]);
-    }
+    // var headerVals;
+    // if (!currentList || !currentList.length) {
+    //   headerVals = ['Brand', 'Name', 'Count'];
+    // } else {
+    //   headerVals = Object.keys(currentList[0]);
+    // }
     //var tableRow = document.createElement("tr");
-    for (var i = 0; i < headerVals.length; i++) {
-      var element = headerVals[i];
+    for (var i = 0; i < showVals.length; i++) {
+      var element = showVals[i];
       var containerDiv = document.createElement("div");
       containerDiv.className = 'container';
       var rowDiv = document.createElement("div");
@@ -1268,7 +1268,7 @@
     for (var i =  0; i < formDivs.length; i++) {
       var key = formDivs[i].firstElementChild.innerHTML;
       var value = document.getElementById(key).value; // formDivs[i].lastElementChild.value;
-      if (!value || value == '') {
+      if (key in showVals && (!value || value == '')) {
         alert("Please add a value for " + key);
         return;
       }
