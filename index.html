@@ -173,8 +173,20 @@
     <div class="section-heading">
       <h3 class="pt-3 px-3">Current Inventory</h3>
       <h6 class="px-3">
-        <span>Total Count:</span>
-        <span id="cigarCount"></span>
+        <div class="d-flex justify-content-between">
+          <div>
+            <span>Total Count:</span>
+            <span id="cigarCount"></span>
+          </div>
+          <div>
+            <select name="sortBy" id="sortBy" class="btn btn-sm btn-primary mr-1" onchange="sortChanged()">
+              <option value="Brand">Brand</option>
+              <option value="Name">Name</option>
+              <option value="Count">Count</option>
+            </select>
+            <button class="btn btn-sm btn-primary" onclick="directionChanged()"><i title="ASC" id="sortIcon" class="bi bi-sort-down-alt"></i></button>
+          </div>
+        </div>
       </h6>
     </div>
     <hr class="section-seperator"/>
@@ -316,6 +328,7 @@
     // if (localStorage.getItem(APP_LOCAL_STORAGE_PREFIX + 'seengroupWords') == null) {
     //   localStorage.setItem(APP_LOCAL_STORAGE_PREFIX + 'seengroupWords', JSON.stringify({}));
     // }
+    sortCigars('Brand', 'ASC');
   }
 
   const APP_LOCAL_STORAGE_PREFIX = 'cigars';
@@ -1351,25 +1364,26 @@
 
     console.log('gonna add it!');
 
-    // sort by name
-    currentList.sort(function(a, b) {
-      var nameA = a.Brand.toUpperCase();
-      var nameB = b.Brand.toUpperCase();
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
+    // // sort by name
+    // currentList.sort(function(a, b) {
+    //   var nameA = a.Brand.toUpperCase();
+    //   var nameB = b.Brand.toUpperCase();
+    //   if (nameA < nameB) {
+    //     return -1;
+    //   }
+    //   if (nameA > nameB) {
+    //     return 1;
+    //   }
 
-      // names must be equal
-      return 0;
-    });
-    localStorage.setItem(APP_LOCAL_STORAGE_PREFIX, JSON.stringify(currentList));
+    //   // names must be equal
+    //   return 0;
+    // });
+    localStorage.setItem(APP_LOCAL_STORAGE_PREFIX, JSON.stringify(currentList)); 
     deleteElementContents('addarea');
     makeAddCigarTable();
     // buildInventoryTable();
-    buildInventoryGrid();
+    sortChanged();
+    // buildInventoryGrid();
   }
 
   /*********************************************************************
@@ -1429,6 +1443,63 @@
     return confirm(`You are about to ${message}. This can not be undone. Are you sure?`);
   }
 
+  function sortCigars(sortCategory, direction) {
+    var currentList = [];
+    try {
+      currentList = JSON.parse(localStorage.getItem(APP_LOCAL_STORAGE_PREFIX));
+      if (!currentList) {
+        currentList = [];
+      }
+    } catch (e) {
+      console.log('havent seen that one before');
+    }
+
+    currentList.sort(function(a, b) {
+      var nameA = isNaN(parseInt(a[sortCategory])) ? a[sortCategory].toUpperCase() : parseInt(a[sortCategory]);
+      var nameB = isNaN(parseInt(b[sortCategory])) ? b[sortCategory].toUpperCase() : parseInt(b[sortCategory]);
+      if (nameA < nameB) {
+        if (direction === 'DESC') {
+          return 1;
+        } else {
+          return -1;
+        }
+      }
+      if (nameA > nameB) {
+        if (direction === 'DESC') {
+          return -1;
+        } else {
+          return 1;
+        }
+      }
+      return 0;
+    });
+    localStorage.setItem(APP_LOCAL_STORAGE_PREFIX, JSON.stringify(currentList));
+    buildInventoryGrid();
+  }
+
+  function sortChanged() {
+    console.log('you wan to change the sort!');
+    var sortCategory = document.getElementById('sortBy').value;
+    var sortIcon = document.getElementById('sortIcon').title;
+
+    sortCigars(sortCategory, sortIcon);
+  }
+
+  function directionChanged() {
+    console.log('you wan to change the direction!');
+    var sortCategory = document.getElementById('sortBy').value;
+    var sortIcon = document.getElementById('sortIcon');
+
+    if (sortIcon.title === 'ASC') {
+      sortIcon.title = 'DESC';
+      sortIcon.className = 'bi bi-sort-down'
+    } else {
+      sortIcon.title = 'ASC';
+      sortIcon.className = 'bi bi-sort-down-alt'
+    }
+
+    sortCigars(sortCategory, sortIcon.title);
+  }
 </script>
 
 </html>
