@@ -1455,8 +1455,15 @@
     }
 
     currentList.sort(function(a, b) {
-      var nameA = isNaN(parseInt(a[sortCategory])) ? a[sortCategory].toUpperCase() : parseInt(a[sortCategory]);
-      var nameB = isNaN(parseInt(b[sortCategory])) ? b[sortCategory].toUpperCase() : parseInt(b[sortCategory]);
+      var nameA;
+      var nameB;
+      if (sortCategory === 'Count') {
+        nameA = parseInt(a[sortCategory]);
+        nameB = parseInt(b[sortCategory]);
+      } else {
+        nameA = a[sortCategory].toUpperCase();
+        nameB = b[sortCategory].toUpperCase();
+      }
       if (nameA < nameB) {
         if (direction === 'DESC') {
           return 1;
